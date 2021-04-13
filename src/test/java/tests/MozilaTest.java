@@ -1,15 +1,27 @@
 package tests;
 
 import Configuration.BaseFirefoxConfiguration;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 public class MozilaTest extends BaseFirefoxConfiguration {
-    @Test
-    public void mozilaTest () {
-        WebDriver driver = initConfig();
-        driver.get("http://serviceacc.foxminded.com.ua/");
+    private WebDriver driver;
+
+    @Before
+    public void initDriver() {
+        driver = initConfig();
+    }
+
+    @After
+    public void screenShot() {
         makeScreenShot(driver);
         driver.quit();
+    }
+
+    @Test
+    public void mozilaTest () {
+        driver.get("http://serviceacc.foxminded.com.ua/");
     }
 }
