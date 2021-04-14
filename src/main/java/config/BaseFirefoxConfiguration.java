@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.*;
@@ -15,12 +14,18 @@ import java.io.*;
 public class BaseFirefoxConfiguration {
     protected WebDriver driver;
 
+    /**
+     * Initialization of Firefox driver
+     */
     @Before
     public void initConfig() {
         System.setProperty("webdriver.gecko.driver","C:\\progs\\geckodriver-master\\geckodriver.exe");
         driver = new FirefoxDriver();
     }
 
+    /**
+     * Make screens
+     */
     @After
     public void makeScreenShot() {
         File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -33,6 +38,9 @@ public class BaseFirefoxConfiguration {
         driver.quit();
     }
 
+    /**
+     * Autoincrement for screenshots
+     */
     private Long getSomeKindOfSequece() {
         final String SEQ_PATH = "sequence\\firefoxSeqFile";
 

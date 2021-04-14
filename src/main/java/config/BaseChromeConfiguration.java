@@ -8,18 +8,21 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
 import java.io.*;
 
 public class BaseChromeConfiguration {
     protected WebDriver driver;
-
+    /**
+     * Initialization of Chrome driver
+     */
     @Before
     public void initConfig() {
         driver = new ChromeDriver();
     }
 
+    /**
+     * Make screenshots
+     */
     @After
     public void makeScreenShot() {
         File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -32,6 +35,9 @@ public class BaseChromeConfiguration {
         driver.quit();
     }
 
+    /**
+     * Autoincrement for Chrome screens
+     */
     private Long getSomeKindOfSequece() {
         final String SEQ_PATH = "sequence\\chromeSeqFile";
 
