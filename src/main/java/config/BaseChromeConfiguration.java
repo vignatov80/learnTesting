@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.*;
 
-public class BaseChromeConfiguration {
+public class BaseChromeConfiguration extends ReadProperties {
     protected WebDriver driver;
     /**
      * Initialization of Chrome driver

@@ -11,15 +11,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.*;
 
-public class BaseFirefoxConfiguration {
-    protected WebDriver driver;
+public class BaseFirefoxConfiguration extends ReadProperties {
+    protected static WebDriver driver;
 
     /**
      * Initialization of Firefox driver
      */
     @Before
     public void initConfig() {
-        System.setProperty("webdriver.gecko.driver","C:\\progs\\geckodriver-master\\geckodriver.exe");
+        configFileReader();
+        System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver.path"));
         driver = new FirefoxDriver();
     }
 
@@ -81,5 +82,7 @@ public class BaseFirefoxConfiguration {
         }
         return null;
     }
+
+
 
 }
