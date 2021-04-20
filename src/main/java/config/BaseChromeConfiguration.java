@@ -17,6 +17,8 @@ public class BaseChromeConfiguration extends ReadProperties {
      */
     @Before
     public void initConfig() {
+        configFileReader();
+        System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver.path"));
         driver = new ChromeDriver();
     }
 

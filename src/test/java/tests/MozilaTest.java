@@ -10,7 +10,6 @@ public class MozilaTest extends BaseFirefoxConfiguration {
      */
      @Test
      public void mozilaTest() {
-     configFileReader();
      driver.get(properties.getProperty("db.baseUrl"));
     }
 

@@ -10,7 +10,6 @@ public class ChromeTest extends BaseChromeConfiguration {
      */
     @Test
     public void chromeTest () {
-        configFileReader();
         driver.get(properties.getProperty("db.baseUrl"));
     }
 }
