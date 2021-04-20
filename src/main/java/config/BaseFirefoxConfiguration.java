@@ -25,64 +25,10 @@ public class BaseFirefoxConfiguration extends ReadProperties {
     }
 
     /**
-     * Make screens
+     * Close Firefox Driver
      */
     @After
-    public void makeScreenShot() {
-        File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(screenshotFile, new File("screenshots\\firefox"+getSomeKindOfSequece()+".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        getSomeKindOfSequece();
+    public void quitDriver() {
         driver.quit();
     }
-
-    /**
-     * Autoincrement for screenshots
-     */
-    private Long getSomeKindOfSequece() {
-        final String SEQ_PATH = "sequence\\firefoxSeqFile";
-
-        File file = new File(SEQ_PATH);
-        if (!file.exists()) {
-            System.out.println("File not exists");
-
-            FileNum fileNum = new FileNum(1L);
-
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream(SEQ_PATH);
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                objectOutputStream.writeObject(fileNum);
-                objectOutputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        try {
-            Long num;
-            FileInputStream fileInputStream = new FileInputStream(SEQ_PATH);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
-            FileNum fileNum1 = (FileNum) objectInputStream.readObject();
-            num = fileNum1.getNum();
-            fileNum1.setNum(num+1);
-
-            FileOutputStream fileOutputStream = new FileOutputStream(SEQ_PATH);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(fileNum1);
-            objectOutputStream.close();
-
-            return num;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
-
 }
