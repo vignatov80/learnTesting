@@ -1,17 +1,15 @@
 package config;
 
-import model.FileNum;
-import org.apache.commons.io.FileUtils;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.io.*;
+
+import java.util.concurrent.TimeUnit;
 
 public class BaseChromeConfiguration extends ReadProperties {
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     /**
      * Initialization of Chrome driver
@@ -21,10 +19,21 @@ public class BaseChromeConfiguration extends ReadProperties {
         configFileReader();
         System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver.path"));
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+    /**
+     * Clear Cookies
+     */
+    @After
+    public void cleanUp(){
+        driver.manage().deleteAllCookies();
     }
 
-    @After
-    public void closeDriver(){
-        driver.quit();
+    /**
+     * Close Firefox Driver
+     */
+    @AfterClass
+    public static void quitDriver() {
+        driver.close();
     }
 }
