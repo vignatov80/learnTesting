@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ReceiptPage extends PageObject {
 
-    @FindBy(tagName = "h1")
+    @FindBy(tagName = "//title")
     private WebElement header;
 
     public ReceiptPage(WebDriver driver) {

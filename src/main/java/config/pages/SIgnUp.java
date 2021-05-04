@@ -22,11 +22,10 @@ public class SIgnUp extends PageObject {
     }
 
 
-    public void enterUserName(String userName) {
+    public void enterUserName(String userName, String password ) {
         this.userName.clear();
         this.userName.sendKeys(userName);
-    }
-    public void enterPassword(String password){
+
         this.password.clear();
         this.password.sendKeys(password);
     }

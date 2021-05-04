@@ -32,8 +32,8 @@ public class BaseChromeConfiguration extends ReadProperties {
     /**
      * Close Firefox Driver
      */
-    @AfterClass
-    public static void quitDriver() {
-        driver.close();
-    }
+//    @AfterClass
+//    public static void quitDriver() {
+//        driver.close();
+//    }
 }
