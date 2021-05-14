@@ -19,6 +19,8 @@ public class BaseFirefoxConfiguration extends ReadProperties {
         System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver.path"));
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Access to base URL
+        driver.get(properties.getProperty("db.baseUrl"));
     }
     /**
      * Clear Cookies

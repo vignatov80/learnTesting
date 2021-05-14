@@ -12,9 +12,6 @@ public class SignupFormTestChrome extends BaseChromeConfiguration {
     @Test
     public void logIn(){
 
-        //Access to base URL
-        driver.get(properties.getProperty("db.baseUrl"));
-
         //Imoport Selenium driver
         SIgnUp signUpPage = new SIgnUp(driver);
 
@@ -25,7 +22,6 @@ public class SignupFormTestChrome extends BaseChromeConfiguration {
         ReceiptPage receiptPage = signUpPage.submit();
 
         // Sign in
-        ReceiptPage ticket;
         assertEquals("Tickets", receiptPage.confirmationHeader());
     }
 }

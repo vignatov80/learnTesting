@@ -20,6 +20,8 @@ public class BaseChromeConfiguration extends ReadProperties {
         System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver.path"));
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Access to base URL
+        driver.get(properties.getProperty("db.baseUrl"));
     }
     /**
      * Clear Cookies
