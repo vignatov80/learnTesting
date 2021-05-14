@@ -7,19 +7,19 @@ import org.openqa.selenium.support.FindBy;
 
 public class ReceiptPage extends PageObject {
 
-    @FindBy(tagName = "//title")
-    private WebElement header;
+    @FindBy(xpath = "//span[contains(text(),'Tickets')]")
+    private WebElement ticket;
 
     public ReceiptPage(WebDriver driver) {
 
         super(driver);
     }
     public boolean isInitialized() {
-        return header.isDisplayed();
+        return ticket.isDisplayed();
     }
 
     public String confirmationHeader(){
 
-        return header.getText();
+        return ticket.getText();
     }
 }
