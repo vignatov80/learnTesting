@@ -22,6 +22,7 @@ public class BaseChromeConfiguration extends ReadProperties {
         driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
         //Access to base URL
         driver.get(properties.getProperty("db.baseUrl"));
+        driver.manage().window().maximize();
     }
     /**
      * Clear Cookies
@@ -32,7 +33,7 @@ public class BaseChromeConfiguration extends ReadProperties {
 //    }
 //
 //    /**
-//     * Close Firefox Driver
+//     * Close Chrome Driver
 //     */
 //    @AfterClass
 //    public static void quitDriver() {
