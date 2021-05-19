@@ -19,23 +19,23 @@ public class BaseChromeConfiguration extends ReadProperties {
         configFileReader();
         System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver.path"));
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
         //Access to base URL
         driver.get(properties.getProperty("db.baseUrl"));
     }
     /**
      * Clear Cookies
      */
-    @After
-    public void cleanUp(){
-        driver.manage().deleteAllCookies();
-    }
-
-    /**
-     * Close Firefox Driver
-     */
-    @AfterClass
-    public static void quitDriver() {
-        driver.close();
-    }
+//    @After
+//    public void cleanUp(){
+//        driver.manage().deleteAllCookies();
+//    }
+//
+//    /**
+//     * Close Firefox Driver
+//     */
+//    @AfterClass
+//    public static void quitDriver() {
+//        driver.close();
+//    }
 }

@@ -17,6 +17,7 @@ public class SIgnUp extends PageObject {
     @FindBy(id="login-signin")
     private WebElement signin;
 
+
     public SIgnUp(WebDriver driver) {
         super(driver);
     }

@@ -15,12 +15,13 @@ public class SignUpFormTestMozila extends BaseFirefoxConfiguration {
 
         //Imoport Selenium driver
         SIgnUp signUpPage = new SIgnUp(driver);
+        ReceiptPage receiptPage = new ReceiptPage(driver);
 
         //Write login, password
         signUpPage.enterUserName(properties.getProperty("db.login"),properties.getProperty("db.password"));
 
         //Press button
-        ReceiptPage receiptPage = signUpPage.submit();
+         signUpPage.submit();
 
         //Page validation
         assertEquals("Tickets", receiptPage.confirmationHeader());
