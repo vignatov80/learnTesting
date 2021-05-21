@@ -8,13 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import static org.junit.Assert.assertTrue;
 
 public class SIgnUp extends PageObject {
-    @FindBy(id="username")
+    @FindBy(id = "username")
     private WebElement userName;
 
-    @FindBy(id="password")
+    @FindBy(id = "password")
     private WebElement password;
 
-    @FindBy(id="login-signin")
+    @FindBy(id = "login-signin")
     private WebElement signin;
 
 
@@ -23,14 +23,15 @@ public class SIgnUp extends PageObject {
     }
 
 
-    public void enterUserName(String userName, String password ) {
+    public void enterUserName(String userName, String password) {
         this.userName.clear();
         this.userName.sendKeys(userName);
 
         this.password.clear();
         this.password.sendKeys(password);
     }
-    public ReceiptPage submit (){
+
+    public ReceiptPage submit() {
         signin.click();
         return new ReceiptPage(driver);
     }

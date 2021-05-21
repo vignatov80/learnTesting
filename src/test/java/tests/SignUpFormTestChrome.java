@@ -4,14 +4,11 @@ import config.BaseChromeConfiguration;
 import config.pages.ReceiptPage;
 import config.pages.SIgnUp;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class SignupFormTestChrome extends BaseChromeConfiguration {
+public class SignUpFormTestChrome extends BaseChromeConfiguration {
+
 
     @Test
     public void logIn(){
@@ -29,7 +26,6 @@ public class SignupFormTestChrome extends BaseChromeConfiguration {
         // Sign in
         assertEquals("Tickets", receiptPage.confirmationHeader());
 
-//        System.out.println("Test passed mlea");
     }
 
 

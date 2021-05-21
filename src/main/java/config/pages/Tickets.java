@@ -18,6 +18,14 @@ public class Tickets extends PageObject {
     @FindBy(xpath = "//a[@class='ticket-title-id locked-link']")
     private WebElement ticketsTitle;
 
+    List<WebElement> ticketTitle = driver.findElements(By.xpath("//a[@class='ticket-title-id locked-link']/span[2]"));
+
+    List<WebElement> ticketId = driver.findElements(By.xpath("//td[@width='80px']"));
+
+    List<WebElement> ticketAssignee = driver.findElements(By.xpath("//tr[@class='assigned-manager']"));
+
+    List<WebElement> ticketStage = driver.findElements(By.xpath("//td[@width='130px']"));
+
     public WebElement getMenuTickets() {
         return menuTickets;
     }
@@ -39,26 +47,22 @@ public class Tickets extends PageObject {
         return new ReceiptPage(driver);
     }
     public void getTicketsTitle(){
-        List<WebElement> listOfElements = driver.findElements(By.xpath("//a[@class='ticket-title-id locked-link']"));
-        for(WebElement eachElement : listOfElements ) {
+        for(WebElement eachElement : ticketTitle ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTicketsId(){
-        List<WebElement> listOfIdElements = driver.findElements(By.xpath("//td[@width='80px']"));
-        for(WebElement eachElement : listOfIdElements ) {
+        for(WebElement eachElement : ticketId ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTicketsAssignee(){
-        List<WebElement> listOfAssigneeElements = driver.findElements(By.xpath("//tr[@class='assigned-manager']"));
-        for(WebElement eachElement : listOfAssigneeElements ) {
+        for(WebElement eachElement : ticketAssignee ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTicketStage(){
-        List<WebElement> listOfStageElements = driver.findElements(By.xpath("//td[@width='130px']"));
-        for(WebElement eachElement : listOfStageElements ) {
+        for(WebElement eachElement : ticketStage ) {
             System.out.println(eachElement.getText());
         }
     }

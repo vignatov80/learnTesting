@@ -1,5 +1,6 @@
 package config;
 
+import config.pages.SIgnUp;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseChromeConfiguration extends ReadProperties {
     protected static WebDriver driver;
-
+    protected static SIgnUp signUpPage;
     /**
      * Initialization of Chrome driver
      */
@@ -19,24 +20,28 @@ public class BaseChromeConfiguration extends ReadProperties {
         configFileReader();
         System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver.path"));
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
         //Access to base URL
         driver.get(properties.getProperty("db.baseUrl"));
         driver.manage().window().maximize();
+        signUpPage = new SIgnUp(driver);
+        //Enter User name, Password
+        signUpPage.enterUserName(properties.getProperty("db.login"),properties.getProperty("db.password") );
+        //Press button
+        signUpPage.submit();
     }
     /**
      * Clear Cookies
      */
-//    @After
-//    public void cleanUp(){
-//        driver.manage().deleteAllCookies();
-//    }
-//
-//    /**
-//     * Close Chrome Driver
-//     */
-//    @AfterClass
-//    public static void quitDriver() {
-//        driver.close();
-//    }
+    @After
+    public void cleanUp(){
+        driver.manage().deleteAllCookies();
+    }
+
+    /**
+     * Close Chrome Driver
+     */
+    @AfterClass
+    public static void quitDriver() {
+        driver.close();
+    }
 }

@@ -13,13 +13,10 @@ public class GetDashboardDeadlineIsOverInfo extends BaseChromeConfiguration {
 
     @Test
     public void getDashboardDeadlineIsOverInfo(){
-        SIgnUp signUpPage = new SIgnUp(driver);
+
         Dashboard dashboardPage = new Dashboard(driver);
 
-        //Enter User name, Password
-        signUpPage.enterUserName(properties.getProperty("db.login"),properties.getProperty("db.password") );
-        //Press button
-        signUpPage.submit();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //Press menu dashboard button
         dashboardPage.accessMenuDashboard();
         //Press Menu Dashboard button
@@ -27,30 +24,20 @@ public class GetDashboardDeadlineIsOverInfo extends BaseChromeConfiguration {
         //Deadline Is Over Button
         dashboardPage.accessDoneDeadlineIsOverButton();
 
-        driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(60000, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //get all Title name for Category = "Разработка"
-        System.out.println("Get title where category = РАЗРАБОТКА ");
+//        System.out.println("Get title where category = РАЗРАБОТКА ");
+//        dashboardPage.getTitleRazrabotka();
 
-        dashboardPage.getTitleRazrabotka1();
-
-        dashboardPage.getTitleRazrabotka2();
-
-        dashboardPage.getTitleRazrabotka3();
-
-        dashboardPage.getTitleRazrabotka4();
-
-        //get all Title name for Category = "Финансы"
+//        get all Title name for Category = "Финансы"
         System.out.println("Get title where category = ФИНАНСЫ");
-
-        dashboardPage.getTitleFinansi1();
-
-        dashboardPage.getTitleFinansi2();
-
-        //all ID of Priority = P3
-        System.out.println("Get ID where Priority = P3");
-
-        dashboardPage.getIdP3();
+        dashboardPage.getTitleFinansi();
+//
+//        //all ID of Priority = P3
+//        System.out.println("Get ID where Priority = P3");
+//        dashboardPage.getTitleP3();
 
 
     }
