@@ -1,37 +1,33 @@
 package tests;
 
 import config.BaseChromeConfiguration;
-import config.pages.SIgnUp;
 import config.pages.Tickets;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Test9 extends BaseChromeConfiguration {
+public class Test9Subparagraph3 extends BaseChromeConfiguration {
 
     @Test
     public void getTicketPage(){
         Tickets ticketsPage = new Tickets(driver);
 
-        //Enter User name, Password
-//        signUpPage.enterUserName(properties.getProperty("db.login"),properties.getProperty("db.password") );
-        //Press button
-//        signUpPage.submit();
-//        signUpPage.logIn(properties.getProperty("db.login"),properties.getProperty("db.password"));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Timeout 20 sec
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
+        //Display all Titles from Ticket page
         System.out.println("Titles:");
         ticketsPage.getTicketsTitle();
 
+        //Display all IDs from Ticket page
         System.out.println("IDs:");
         ticketsPage.getTicketsId();
 
+        //Display all Assignee from Ticket page
         System.out.println("Assignee:");
         ticketsPage.getTicketsAssignee();
 
+        //Display all Stages from Ticket page
         System.out.println("Stage:");
         ticketsPage.getTicketStage();
     }

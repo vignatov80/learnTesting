@@ -1,7 +1,6 @@
 package config.pages;
 
 import config.PageObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class Tickets extends PageObject {
+    /*
+    Declare all locators
+     */
+
     @FindBy(id="menu-tickets")
     private WebElement menuTickets;
 
@@ -18,13 +21,21 @@ public class Tickets extends PageObject {
     @FindBy(xpath = "//a[@class='ticket-title-id locked-link']")
     private WebElement ticketsTitle;
 
-    List<WebElement> ticketTitle = driver.findElements(By.xpath("//a[@class='ticket-title-id locked-link']/span[2]"));
+    @FindBy(xpath="//a[@class='ticket-title-id locked-link']/span[2]")
+    List<WebElement> ticketTitle;
 
-    List<WebElement> ticketId = driver.findElements(By.xpath("//td[@width='80px']"));
+    @FindBy(xpath="//td[@width='80px']")
+    List<WebElement> ticketId;
 
-    List<WebElement> ticketAssignee = driver.findElements(By.xpath("//tr[@class='assigned-manager']"));
+    @FindBy(xpath="//tr[@class='assigned-manager']")
+    List<WebElement> ticketAssignee;
 
-    List<WebElement> ticketStage = driver.findElements(By.xpath("//td[@width='130px']"));
+    @FindBy(xpath="//*[contains(text(),'YouTub')]/ancestor::td/preceding-sibling::td[@width='130px']/span")
+    List<WebElement> ticketStage;
+
+    /*
+    Accessing the locators
+     */
 
     public WebElement getMenuTickets() {
         return menuTickets;

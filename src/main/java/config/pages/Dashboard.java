@@ -1,7 +1,6 @@
 package config.pages;
 
 import config.PageObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,8 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class Dashboard extends PageObject {
-
-    @FindBy(xpath="//i[contains(text(),'dashboard')]")
+    /*
+    Declare all locators
+     */
+    @FindBy(xpath="//a[@href='#/dashboard']")
     private WebElement menuDashboard;
 
     @FindBy(xpath = "//button[@id='dashboard-done']")
@@ -19,14 +20,17 @@ public class Dashboard extends PageObject {
     @FindBy(xpath = "//*[@href='#collapse7']/div")
     private WebElement deadlineIsOverBtn;
 
-    List<WebElement> titleForRazrabotka = driver.findElements(By.xpath("//*[contains(text(),'Разработка')]/ancestor::td/preceding-sibling::td[@style='text-align: left; width: 20%;']"));
+    @FindBy(xpath="//*[contains(text(),'Разраб')]/ancestor::td/preceding-sibling::td[@style='text-align: left; width: 20%;']")
+    List<WebElement> titleForRazrabotka;
 
-    List<WebElement> titleFinansi = driver.findElements(By.xpath("//*[contains(text(),'Финансы')]/ancestor::td/preceding-sibling::td[@style='text-align: left; width: 20%;']"));
+    @FindBy(xpath="//*[contains(text(),'Финансы')]/ancestor::td/preceding-sibling::td[@style='text-align: left; width: 20%;']")
+    List<WebElement> titleFinansi;
 
-    List<WebElement> titleP3 = driver.findElements(By.xpath("//*[contains(text(),'P3')]/preceding-sibling::td[@style='width: 5% !important;']"));
-
-
-
+    @FindBy(xpath="//*[contains(text(),'P3')]/preceding-sibling::td[@style='width: 5% !important;']")
+    List<WebElement> titleP3;
+     /*
+    Accessing the locators
+     */
     public Dashboard(WebDriver driver) {
         super(driver);
     }
