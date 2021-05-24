@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.concurrent.TimeUnit;
-
 public class BaseChromeConfiguration extends ReadProperties {
     protected static WebDriver driver;
     protected static SIgnUp signUpPage;

@@ -8,13 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 public class Test9Subparagraph4 extends BaseChromeConfiguration {
 
-
     @Test
     public void getDashboardDeadlineIsOverInfo(){
 
         Dashboard dashboardPage = new Dashboard(driver);
 
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         //Press menu dashboard button
         dashboardPage.accessMenuDashboard();
         //Press Menu Dashboard button
@@ -22,7 +21,6 @@ public class Test9Subparagraph4 extends BaseChromeConfiguration {
         //Deadline Is Over Button
         dashboardPage.accessDoneDeadlineIsOverButton();
 
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         //  get all Title name for Category = "Разработка"
         System.out.println("Get title where category = РАЗРАБОТКА ");

@@ -21,6 +21,9 @@ public class TicketsCreate extends PageObject {
     @FindBy(id="new-contact-for-ticket")
     private WebElement createContact;
 
+    @FindBy(id="submit-btn")
+    private WebElement submit;
+
 
 
 
@@ -53,5 +56,22 @@ public class TicketsCreate extends PageObject {
         createContact.click();
         return new ReceiptPage(driver);
     }
+    public void enterPriority(){
+        Select drpPriority = new Select(driver.findElement(By.xpath("//select[@id='priority']")));
+        drpPriority.selectByVisibleText("P4");
+    }
+    public void enterDepartment(){
+        Select drpDepartment = new Select(driver.findElement(By.id("department")));
+        drpDepartment.selectByVisibleText("Комната добра");
+    }
+    public void enterManager(){
+        Select drpManager = new Select(driver.findElement(By.id("manager")));
+        drpManager.selectByVisibleText("Thadmin Thadmin");
+    }
+    public ReceiptPage accessSubmit() {
+        submit.click();
+        return new ReceiptPage(driver);
+    }
+
 
 }

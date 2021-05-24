@@ -77,6 +77,13 @@ public class Tickets extends PageObject {
             System.out.println(eachElement.getText());
         }
     }
+    public void confirmTicketTitle(){
+        for(WebElement eachElement : ticketTitle ) {
+            eachElement.getText();
+        }
+
+
+    }
 
 }
 

@@ -19,7 +19,6 @@ public class ReceiptPage extends PageObject {
     }
 
     public String confirmationHeader(){
-
         return ticket.getText();
     }
 }

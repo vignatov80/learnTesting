@@ -13,7 +13,7 @@ public class Test9Subparagraph3 extends BaseChromeConfiguration {
         Tickets ticketsPage = new Tickets(driver);
 
         //Timeout 20 sec
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //Display all Titles from Ticket page
         System.out.println("Titles:");

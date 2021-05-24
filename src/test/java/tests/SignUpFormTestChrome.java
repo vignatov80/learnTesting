@@ -13,7 +13,7 @@ public class SignUpFormTestChrome extends BaseChromeConfiguration {
     @Test
     public void logIn(){
 
-        //Imoport Selenium driver
+        //Import Selenium driver
         SIgnUp signUpPage = new SIgnUp(driver);
         ReceiptPage receiptPage = new ReceiptPage(driver);
 
