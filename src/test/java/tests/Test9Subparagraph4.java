@@ -22,7 +22,7 @@ public class Test9Subparagraph4 extends BaseChromeConfiguration {
         //Deadline Is Over Button
         dashboardPage.accessDoneDeadlineIsOverButton();
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         //  get all Title name for Category = "Разработка"
         System.out.println("Get title where category = РАЗРАБОТКА ");

@@ -15,7 +15,7 @@ public class Tickets extends PageObject {
     @FindBy(id="menu-tickets")
     private WebElement menuTickets;
 
-    @FindBy(id= "create-new-ticket")
+    @FindBy(xpath= "//*[@id='create-new-ticket']")
     private WebElement createTickets;
 
     @FindBy(xpath = "//a[@class='ticket-title-id locked-link']")
@@ -34,7 +34,7 @@ public class Tickets extends PageObject {
     List<WebElement> ticketStage;
 
     /*
-    Accessing the locators
+    Declare all locators
      */
 
     public WebElement getMenuTickets() {
