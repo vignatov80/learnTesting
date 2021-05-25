@@ -4,6 +4,8 @@ import config.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -33,10 +35,11 @@ public class Tickets extends PageObject {
     @FindBy(xpath="//*[contains(text(),'YouTub')]/ancestor::td/preceding-sibling::td[@width='130px']/span")
     List<WebElement> ticketStage;
 
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+
     /*
     Declare all locators
      */
-
     public WebElement getMenuTickets() {
         return menuTickets;
     }
@@ -58,21 +61,25 @@ public class Tickets extends PageObject {
         return new ReceiptPage(driver);
     }
     public void getTicketsTitle(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(ticketTitle));
         for(WebElement eachElement : ticketTitle ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTicketsId(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(ticketId));
         for(WebElement eachElement : ticketId ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTicketsAssignee(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(ticketAssignee));
         for(WebElement eachElement : ticketAssignee ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTicketStage() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOfAllElements(ticketStage));
         for(WebElement eachElement : ticketStage ) {
             System.out.println(eachElement.getText());
         }

@@ -1,7 +1,6 @@
 package config.pages;
 
 import config.PageObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +31,7 @@ public class Dashboard extends PageObject {
     @FindBy(xpath="//*[contains(text(),'P3')]/preceding-sibling::td[@style='width: 5% !important;']")
     List<WebElement> titleP3;
 
-
+    WebDriverWait wait = new WebDriverWait(driver, 10);
 
      /*
     Accessing the locators
@@ -55,18 +54,19 @@ public class Dashboard extends PageObject {
         return new ReceiptPage(driver);
     }
     public void getTitleRazrabotka(){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf((WebElement) titleForRazrabotka));
+        wait.until(ExpectedConditions.visibilityOfAllElements(titleForRazrabotka));
         for(WebElement eachElement : titleForRazrabotka ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTitleFinansi(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(titleFinansi));
         for(WebElement eachElement : titleFinansi ) {
             System.out.println(eachElement.getText());
         }
     }
     public void getTitleP3(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(titleP3));
         for(WebElement eachElement : titleP3 ) {
             System.out.println(eachElement.getText());
         }
