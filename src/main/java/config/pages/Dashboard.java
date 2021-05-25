@@ -1,9 +1,12 @@
 package config.pages;
 
 import config.PageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -28,13 +31,18 @@ public class Dashboard extends PageObject {
 
     @FindBy(xpath="//*[contains(text(),'P3')]/preceding-sibling::td[@style='width: 5% !important;']")
     List<WebElement> titleP3;
+
+
+
      /*
     Accessing the locators
      */
+
     public Dashboard(WebDriver driver) {
         super(driver);
     }
     public ReceiptPage accessMenuDashboard(){
+        WebElement until = new WebDriverWait(driver, (3)).until(ExpectedConditions.elementToBeClickable(menuDashboard));
         menuDashboard.click();
         return new ReceiptPage(driver);
     }
@@ -47,6 +55,8 @@ public class Dashboard extends PageObject {
         return new ReceiptPage(driver);
     }
     public void getTitleRazrabotka(){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf((WebElement) titleForRazrabotka));
         for(WebElement eachElement : titleForRazrabotka ) {
             System.out.println(eachElement.getText());
         }
@@ -61,4 +71,9 @@ public class Dashboard extends PageObject {
             System.out.println(eachElement.getText());
         }
     }
+
 }
+//    public static void waitVisibleElement(WebElement we) {
+//        with().pollDelay(100, TimeUnit.MILLISECONDS).await().atMost(10, TimeUnit.SECONDS).until(we::isDisplayed);
+//    }
+

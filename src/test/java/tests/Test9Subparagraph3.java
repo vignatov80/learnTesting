@@ -4,19 +4,18 @@ import config.BaseChromeConfiguration;
 import config.pages.Tickets;
 import org.junit.Test;
 
-import java.util.concurrent.TimeUnit;
-
 public class Test9Subparagraph3 extends BaseChromeConfiguration {
 
     @Test
-    public void getTicketPage(){
+    public void getTicketPage() throws InterruptedException {
         Tickets ticketsPage = new Tickets(driver);
 
         //Timeout 20 sec
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        Thread.sleep(3000);
 
         //Display all Titles from Ticket page
         System.out.println("Titles:");
+//        with().pollInSameThread().await().atMost(1000, MILLISECONDS).until(...);
         ticketsPage.getTicketsTitle();
 
         //Display all IDs from Ticket page

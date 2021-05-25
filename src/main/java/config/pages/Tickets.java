@@ -72,12 +72,12 @@ public class Tickets extends PageObject {
             System.out.println(eachElement.getText());
         }
     }
-    public void getTicketStage(){
+    public void getTicketStage() throws InterruptedException {
         for(WebElement eachElement : ticketStage ) {
             System.out.println(eachElement.getText());
         }
     }
-    public void confirmTicketTitle(){
+    public void confirmTicketTitle() throws InterruptedException {
         for(WebElement eachElement : ticketTitle ) {
             eachElement.getText();
         }

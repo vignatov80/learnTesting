@@ -4,16 +4,15 @@ import config.BaseChromeConfiguration;
 import config.pages.Dashboard;
 import org.junit.Test;
 
-import java.util.concurrent.TimeUnit;
-
 public class Test9Subparagraph4 extends BaseChromeConfiguration {
 
     @Test
-    public void getDashboardDeadlineIsOverInfo(){
+    public void getDashboardDeadlineIsOverInfo() {
 
         Dashboard dashboardPage = new Dashboard(driver);
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        Thread.sleep(2000);
 
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         //Press menu dashboard button
         dashboardPage.accessMenuDashboard();
         //Press Menu Dashboard button
@@ -21,7 +20,7 @@ public class Test9Subparagraph4 extends BaseChromeConfiguration {
         //Deadline Is Over Button
         dashboardPage.accessDoneDeadlineIsOverButton();
 
-
+//        Thread.sleep(2000);
         //  get all Title name for Category = "Разработка"
         System.out.println("Get title where category = РАЗРАБОТКА ");
         dashboardPage.getTitleRazrabotka();
