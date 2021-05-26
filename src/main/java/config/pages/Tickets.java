@@ -57,6 +57,7 @@ public class Tickets extends PageObject {
         return new ReceiptPage(driver);
     }
     public ReceiptPage accessCreateTickets(){
+        wait.until(ExpectedConditions.elementToBeClickable(createTickets));
         createTickets.click();
         return new ReceiptPage(driver);
     }

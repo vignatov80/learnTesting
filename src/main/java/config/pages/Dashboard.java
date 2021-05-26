@@ -41,7 +41,7 @@ public class Dashboard extends PageObject {
         super(driver);
     }
     public ReceiptPage accessMenuDashboard(){
-        WebElement until = new WebDriverWait(driver, (3)).until(ExpectedConditions.elementToBeClickable(menuDashboard));
+        wait.until(ExpectedConditions.elementToBeClickable(menuDashboard));
         menuDashboard.click();
         return new ReceiptPage(driver);
     }
@@ -73,7 +73,5 @@ public class Dashboard extends PageObject {
     }
 
 }
-//    public static void waitVisibleElement(WebElement we) {
-//        with().pollDelay(100, TimeUnit.MILLISECONDS).await().atMost(10, TimeUnit.SECONDS).until(we::isDisplayed);
-//    }
+
 
