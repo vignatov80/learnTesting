@@ -2,14 +2,12 @@ package tests;
 
 import config.BaseChromeConfiguration;
 import config.pages.Tickets;
-import config.pages.TicketsCreate;
 import org.junit.Test;
 
 public class Test10Subparagraph2 extends BaseChromeConfiguration {
     @Test
     public void createNewTicket(){
         Tickets ticketsPage = new Tickets(driver);
-        TicketsCreate ticketsCreate = new TicketsCreate(driver);
 
         ticketsPage.accessCreateTickets();
 
