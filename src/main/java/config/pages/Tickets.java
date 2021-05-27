@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -34,6 +35,42 @@ public class Tickets extends PageObject {
 
     @FindBy(xpath="//*[contains(text(),'YouTub')]/ancestor::td/preceding-sibling::td[@width='130px']/span")
     List<WebElement> ticketStage;
+
+    @FindBy(xpath="//input[@id='title']")
+    private WebElement createTicketTitle;
+
+    @FindBy(xpath="//*[@id='description']")
+    private WebElement ticketDescription;
+
+    @FindBy(xpath="//*[@id='categoryId']")
+    private WebElement ticketCategory;
+
+    @FindBy(id="new-contact-for-ticket")
+    private WebElement createContact;
+
+    @FindBy(id="submit-btn")
+    private WebElement submit;
+
+    @FindBy(xpath = "//*[@id='categoryId']")
+    private WebElement category;
+
+    @FindBy(id = "stageId")
+    private WebElement stage;
+
+    @FindBy(id = "company")
+    private WebElement company;
+
+    @FindBy(xpath = "//select[@id='priority']")
+    private WebElement priority;
+
+    @FindBy(id = "department")
+    private WebElement department;
+
+    @FindBy(id = "manager")
+    private WebElement manager;
+
+    @FindBy(id="contactId")
+    private WebElement contactId;
 
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
@@ -89,8 +126,50 @@ public class Tickets extends PageObject {
         for(WebElement eachElement : ticketTitle ) {
             eachElement.getText();
         }
+    }
+    public void enterTitleDescription(String createTicketTitle, String ticketDescription) {
+        this.createTicketTitle.clear();
+        this.createTicketTitle.sendKeys(createTicketTitle);
 
+        this.ticketDescription.clear();
+        this.ticketDescription.sendKeys(ticketDescription);
+    }
 
+    public void enterCategory(String optionCategory){
+        Select drpCategory = new Select(category);
+        drpCategory.selectByVisibleText(optionCategory);
+    }
+    public void enterStage(String optionStage){
+        Select drpStage = new Select(stage);
+        drpStage.selectByVisibleText(optionStage);
+    }
+    public void enterCompany(String optionCompany){
+        Select drpCompany = new Select(company);
+        drpCompany.selectByVisibleText(optionCompany);
+    }
+    public ReceiptPage accessCreateContact(){
+        createContact.click();
+        return new ReceiptPage(driver);
+    }
+    public void enterPriority(String optionPriority){
+        Select drpPriority = new Select(priority);
+        drpPriority.selectByVisibleText(optionPriority);
+    }
+    public void enterContactId(String valueContactId){
+        Select drpPriority = new Select(contactId);
+        drpPriority.selectByValue(valueContactId);
+    }
+    public void enterDepartment(String optionDepartment){
+        Select drpDepartment = new Select(department);
+        drpDepartment.selectByVisibleText(optionDepartment);
+    }
+    public void enterManager(String optionManager){
+        Select drpManager = new Select(manager);
+        drpManager.selectByVisibleText(optionManager);
+    }
+    public ReceiptPage accessSubmit() {
+        submit.click();
+        return new ReceiptPage(driver);
     }
 
 }

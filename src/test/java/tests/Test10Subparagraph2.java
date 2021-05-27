@@ -13,23 +13,23 @@ public class Test10Subparagraph2 extends BaseChromeConfiguration {
 
         ticketsPage.accessCreateTickets();
 
-        ticketsCreate.enterTitleDescription(properties.getProperty("db.ticket.title"),properties.getProperty("db.ticket.description") );
+        ticketsPage.enterTitleDescription(properties.getProperty("db.ticket.title"),properties.getProperty("db.ticket.description") );
 
-        ticketsCreate.enterCategory();
+        ticketsPage.enterCategory("YouTube");
 
-        ticketsCreate.enterStage();
+        ticketsPage.enterStage("CLOSED");
 
-        ticketsCreate.enterCompany();
+        ticketsPage.enterCompany("test");
 
-        ticketsCreate.enterPriority();
+        ticketsPage.enterPriority("P4");
 
-        ticketsCreate.enterDepartment();
+        ticketsPage.enterDepartment("Комната добра");
 
-        ticketsCreate.enterManager();
+        ticketsPage.enterManager("Thadmin Thadmin");
 
-        ticketsCreate.enterContactId();
+        ticketsPage.enterContactId("4: 2592");
 
-        ticketsCreate.accessSubmit();
+        ticketsPage.accessSubmit();
 
     }
 
