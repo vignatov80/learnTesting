@@ -3,6 +3,7 @@ package config.pages;
 import config.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -11,10 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class Tickets extends PageObject {
+
     /*
     Declare all locators
      */
-
     @FindBy(id="menu-tickets")
     private WebElement menuTickets;
 
@@ -72,7 +73,33 @@ public class Tickets extends PageObject {
     @FindBy(id="contactId")
     private WebElement contactId;
 
+    @FindBy(xpath = "//*[contains(text(),'TestTitle')]")
+    private WebElement createdTicket;
+
+    @FindBy(xpath = "//tbody/tr[1]/td[@class='last']/a[@href='#/contact/2592']")
+    private WebElement fullName;
+
+    @FindBy(xpath = "//a[@id='stage-409']")
+    private WebElement closeTicket;
+
+    @FindBy(xpath = "//*[@class='last break-word']//a[ contains (text(), 'test' ) ]")
+    private WebElement validateCompany;
+
+    @FindBy(xpath = "//td[ contains (text(), 'aaa@mai.ru' ) ]")
+    private WebElement validateLogin;
+
+    @FindBy(xpath = "//div[ contains (text(), 'aaa@mai.ru' ) ]")
+    private WebElement validateEmail;
+
+    @FindBy(xpath = "//span[text()='Info']")
+    private WebElement infoButton;
+
+    @FindBy(xpath = "//*[@class='ticket-details-table table table-bordered']/tbody/tr[1]/td[contains(text(),'CLOSED')]")
+    private WebElement status;
+
     WebDriverWait wait = new WebDriverWait(driver, 10);
+
+    Actions actions = new Actions(driver);
 
     /*
     Declare all locators
@@ -171,6 +198,43 @@ public class Tickets extends PageObject {
         submit.click();
         return new ReceiptPage(driver);
     }
-
+    public ReceiptPage accessCreatedTicket()  {
+        wait.until(ExpectedConditions.elementToBeClickable(createdTicket));
+        createdTicket.click();
+        return new ReceiptPage(driver);
+    }
+    public String validateFullName(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(fullName));
+        return fullName.getText();
+    }
+    public String validateCompanyName(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(validateCompany));
+        return validateCompany.getText();
+    }
+    public String validateLoginField(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(validateLogin));
+        return validateLogin.getText();
+    }
+    public String validateEmailField(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(validateEmail));
+        return validateEmail.getText();
+    }
+    public ReceiptPage accessCloseTicket()  {
+        wait.until(ExpectedConditions.elementToBeClickable(closeTicket));
+        closeTicket.click();
+        return new ReceiptPage(driver);
+    }
+    public void handleAlert(){
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
+    }
+    public ReceiptPage accessInfoButton()  {
+        wait.until(ExpectedConditions.elementToBeClickable(infoButton));
+        infoButton.click();
+        return new ReceiptPage(driver);
+    }
+    public String validateStatusField(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(status));
+        return status.getText();
+    }
 }
-

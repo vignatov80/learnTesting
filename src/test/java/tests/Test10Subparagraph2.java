@@ -4,32 +4,58 @@ import config.BaseChromeConfiguration;
 import config.pages.Tickets;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class Test10Subparagraph2 extends BaseChromeConfiguration {
+
     @Test
-    public void createNewTicket(){
+    public void createNewTicket() throws InterruptedException {
         Tickets ticketsPage = new Tickets(driver);
+        //values from dropdown
+        String category = "YouTube";
+        String stage = "OPEN";
+        String company = "test";
+        String priority = "P4";
+        String department = "Комната добра";
+        String manager = "Thadmin Thadmin";
+        String contactId = "4: 2592";
+        String fullName = "Vlad Vlad";
+        String loginName = "aaa@mai.ru";
+
 
         ticketsPage.accessCreateTickets();
 
         ticketsPage.enterTitleDescription(properties.getProperty("db.ticket.title"),properties.getProperty("db.ticket.description") );
 
-        ticketsPage.enterCategory("YouTube");
+        ticketsPage.enterCategory(category);
 
-        ticketsPage.enterStage("CLOSED");
+        ticketsPage.enterStage(stage);
 
-        ticketsPage.enterCompany("test");
+        ticketsPage.enterCompany(company);
 
-        ticketsPage.enterPriority("P4");
+        ticketsPage.enterPriority(priority);
 
-        ticketsPage.enterDepartment("Комната добра");
+        ticketsPage.enterDepartment(department);
 
-        ticketsPage.enterManager("Thadmin Thadmin");
+        ticketsPage.enterManager(manager);
 
-        ticketsPage.enterContactId("4: 2592");
+        ticketsPage.enterContactId(contactId);
 
         ticketsPage.accessSubmit();
 
+        ticketsPage.accessCreatedTicket();
+
+        assertEquals(fullName, ticketsPage.validateFullName());
+
+        assertEquals(company,ticketsPage.validateCompanyName());
+
+        assertEquals(loginName,ticketsPage.validateLoginField());
+
+        assertEquals(loginName,ticketsPage.validateEmailField());
+
+        ticketsPage.accessCloseTicket();
+
+        ticketsPage.handleAlert();
+
     }
-
-
 }

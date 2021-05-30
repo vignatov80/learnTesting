@@ -32,14 +32,13 @@ public class Dashboard extends PageObject {
     List<WebElement> titleP3;
 
     WebDriverWait wait = new WebDriverWait(driver, 10);
-
      /*
     Accessing the locators
      */
-
     public Dashboard(WebDriver driver) {
         super(driver);
     }
+
     public ReceiptPage accessMenuDashboard(){
         wait.until(ExpectedConditions.elementToBeClickable(menuDashboard));
         menuDashboard.click();
