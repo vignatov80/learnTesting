@@ -77,7 +77,7 @@ public class Companies extends PageObject {
         submitCompanyBtn.click();
         return new ReceiptPage(driver);
     }
-    public String validateCompanyTitle(){
+    public String getCompanyTitle(){
         wait.until(ExpectedConditions.visibilityOfAllElements(companyTitle));
         return companyTitle.getText();
     }

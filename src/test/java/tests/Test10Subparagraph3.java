@@ -11,7 +11,11 @@ public class Test10Subparagraph3 extends BaseChromeConfiguration {
     @Test
     public void createNewDepartment() throws InterruptedException {
 
+        /**
+         * Declare variable
+         */
         Departments departmentsPage = new Departments(driver);
+        //Variables for registration fields
         String department = "Test Department";
         String phoneNr = "37322999999";
         String skypeId = "Test Skype Id";
@@ -24,59 +28,53 @@ public class Test10Subparagraph3 extends BaseChromeConfiguration {
         String zipCode = "4001";
         String roomNumber = "98";
 
-
+        //Access menu departments
         departmentsPage.accessMenuDepartments();
-
+        //Access create departments
         departmentsPage.accessCreateDepartment();
 
+        /**
+         * Enter values for department registration
+         */
         departmentsPage.enterDepartmentName(department);
-
         departmentsPage.accessAdditionalInfo();
-
         departmentsPage.enterPhoneNumber(phoneNr);
-
         departmentsPage.enterSkypeId(skypeId);
-
         departmentsPage.enterWebSite(webSite);
-
         departmentsPage.enterEmail(email);
-
         departmentsPage.enterAddress(country,street,buildingNr,city);
-
         departmentsPage.enterZipCode(zipCode);
-
         departmentsPage.enterRoomNumber(roomNumber);
 
+        //Press submit
         departmentsPage.accessDepartmentSubmit();
-
+        //Access created department
         departmentsPage.accessCreatedDepartment();
 
-        assertEquals(department,departmentsPage.validateNameField());
-
+        /**
+         * Validate department details
+         */
+        assertEquals(department,departmentsPage.getNameField());
         assertEquals(city,departmentsPage.validateCity());
+        assertEquals(phoneNr,departmentsPage.getPhoneNr());
+        assertEquals(skypeId,departmentsPage.getSkypeId());
+        assertEquals(webSite,departmentsPage.getWebSiteField());
+        assertEquals(email,departmentsPage.getEmail());
+        assertEquals(country,departmentsPage.getCountry());
+        assertEquals(street,departmentsPage.getStreet());
+        assertEquals(buildingNr,departmentsPage.getBuildingNr());
+        assertEquals(roomNumber,departmentsPage.getRoomNr());
 
-        assertEquals(phoneNr,departmentsPage.validatePhoneNr());
-
-        assertEquals(skypeId,departmentsPage.validateSkypeId());
-
-        assertEquals(webSite,departmentsPage.validateWebSiteField());
-
-        assertEquals(email,departmentsPage.validateEmail());
-
-        assertEquals(country,departmentsPage.validateCountry());
-
-        assertEquals(street,departmentsPage.validateStreet());
-
-        assertEquals(buildingNr,departmentsPage.validateBuildingNr());
-
-        assertEquals(roomNumber,departmentsPage.validateRoomNr());
-
+        //Press back button
         departmentsPage.goBack();
 
+        //Delete department
         departmentsPage.deleteDepartment();
-
         departmentsPage.handleAlert();
 
-        assertNotSame(department,departmentsPage.validateDepartmentTitle());
+        /**
+         * Validate that department was deleted
+         */
+        assertNotSame(department,departmentsPage.getDepartmentTitle());
     }
 }

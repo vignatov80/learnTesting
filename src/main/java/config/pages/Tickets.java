@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Tickets extends PageObject {
 
-    /*
+    /**
     Declare all locators
      */
     @FindBy(id="menu-tickets")
@@ -96,35 +96,36 @@ public class Tickets extends PageObject {
 
     @FindBy(xpath = "//*[@class='ticket-details-table table table-bordered']/tbody/tr[1]/td[contains(text(),'CLOSED')]")
     private WebElement status;
-
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-
-    Actions actions = new Actions(driver);
-
-    /*
-    Declare all locators
+    /**
+     Import libraries
      */
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    Actions actions = new Actions(driver);
     public WebElement getMenuTickets() {
         return menuTickets;
     }
-
     public void setMenuTickets(WebElement menuTickets) {
         this.menuTickets = menuTickets;
     }
-
     public Tickets(WebDriver driver) {
         super(driver);
     }
 
+    //Access Menu tickets
     public ReceiptPage accessMenuTickets(){
         menuTickets.click();
         return new ReceiptPage(driver);
     }
+    //Access Create ticket
     public ReceiptPage accessCreateTickets(){
         wait.until(ExpectedConditions.elementToBeClickable(createTickets));
         createTickets.click();
         return new ReceiptPage(driver);
     }
+
+    /**
+     * Get list of : ticket title, ticket ids, assignee,stage
+     */
     public void getTicketsTitle(){
         wait.until(ExpectedConditions.visibilityOfAllElements(ticketTitle));
         for(WebElement eachElement : ticketTitle ) {
@@ -154,6 +155,7 @@ public class Tickets extends PageObject {
             eachElement.getText();
         }
     }
+    //Enter ticket title and description
     public void enterTitleDescription(String createTicketTitle, String ticketDescription) {
         this.createTicketTitle.clear();
         this.createTicketTitle.sendKeys(createTicketTitle);
@@ -162,6 +164,9 @@ public class Tickets extends PageObject {
         this.ticketDescription.sendKeys(ticketDescription);
     }
 
+    /**
+     *Populate dropdowns
+     */
     public void enterCategory(String optionCategory){
         Select drpCategory = new Select(category);
         drpCategory.selectByVisibleText(optionCategory);
@@ -194,32 +199,39 @@ public class Tickets extends PageObject {
         Select drpManager = new Select(manager);
         drpManager.selectByVisibleText(optionManager);
     }
-    public ReceiptPage accessSubmit() {
+    //Click submit
+    public ReceiptPage accessSubmit(){
         submit.click();
         return new ReceiptPage(driver);
     }
-    public ReceiptPage accessCreatedTicket()  {
+    //Click create ticket
+    public ReceiptPage accessCreatedTicket(){
         wait.until(ExpectedConditions.elementToBeClickable(createdTicket));
         createdTicket.click();
         return new ReceiptPage(driver);
     }
-    public String validateFullName(){
+
+    /**
+     *Populate ticket details
+     */
+    public String getFullName(){
         wait.until(ExpectedConditions.visibilityOfAllElements(fullName));
         return fullName.getText();
     }
-    public String validateCompanyName(){
+    public String getCompanyName(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateCompany));
         return validateCompany.getText();
     }
-    public String validateLoginField(){
+    public String getLoginField(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateLogin));
         return validateLogin.getText();
     }
-    public String validateEmailField(){
+    public String getEmailField(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateEmail));
         return validateEmail.getText();
     }
-    public ReceiptPage accessCloseTicket()  {
+    //Close ticket
+    public ReceiptPage accessCloseTicket(){
         wait.until(ExpectedConditions.elementToBeClickable(closeTicket));
         closeTicket.click();
         return new ReceiptPage(driver);
@@ -228,12 +240,14 @@ public class Tickets extends PageObject {
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
     }
-    public ReceiptPage accessInfoButton()  {
+    //Access ticket info
+    public ReceiptPage accessInfoButton(){
         wait.until(ExpectedConditions.elementToBeClickable(infoButton));
         infoButton.click();
         return new ReceiptPage(driver);
     }
-    public String validateStatusField(){
+    //Get ticket status
+    public String getStatusField(){
         wait.until(ExpectedConditions.visibilityOfAllElements(status));
         return status.getText();
     }

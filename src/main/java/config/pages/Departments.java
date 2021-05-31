@@ -173,40 +173,40 @@ public class Departments extends PageObject {
         wait.until(ExpectedConditions.visibilityOfAllElements(validateCity));
         return validateCity.getText();
     }
-    public String validatePhoneNr(){
+    public String getPhoneNr(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validatePhoneNr));
         return validatePhoneNr.getText();
     }
-    public String validateSkypeId(){
+    public String getSkypeId(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateSkypeId));
         return validateSkypeId.getText();
     }
-    public String validateEmail(){
+    public String getEmail(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateEmail));
         return validateEmail.getText();
     }
-    public String validateCountry(){
+    public String getCountry(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateCountry));
         return validateCountry.getText();
     }
-    public String validateStreet(){
+    public String getStreet(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateStreet));
         return validateStreet.getText();
     }
-    public String validateBuildingNr(){
+    public String getBuildingNr(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateBuildingNr));
         return validateBuildingNr.getText();
     }
-    public String validateRoomNr(){
+    public String getRoomNr(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateRoomNr));
         return validateRoomNr.getText();
     }
-    public String validateNameField(){
+    public String getNameField(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateName));
         return validateName.getText();
     }
 
-    public String validateWebSiteField(){
+    public String getWebSiteField(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateWebSite));
         return validateWebSite.getText();
     }
@@ -224,7 +224,7 @@ public class Departments extends PageObject {
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
     }
-    public String validateDepartmentTitle(){
+    public String getDepartmentTitle(){
         wait.until(ExpectedConditions.visibilityOfAllElements(departmentTitle));
         return departmentTitle.getText();
     }
