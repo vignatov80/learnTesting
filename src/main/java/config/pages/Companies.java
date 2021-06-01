@@ -53,6 +53,29 @@ public class Companies extends PageObject {
         super(driver);
     }
 
+    public ReceiptPage createCompany(String companyName,String emailText ,String phoneText) {
+
+        wait.until(ExpectedConditions.elementToBeClickable(level1RadioBtn));
+        level1RadioBtn.click();
+        this.companyName.clear();
+        this.companyName.sendKeys(companyName);
+
+        wait.until(ExpectedConditions.elementToBeClickable(addInfoBtn));
+        addInfoBtn.click();
+
+        wait.until(ExpectedConditions.visibilityOfAllElements(emailField));
+        this.emailField.clear();
+        this.emailField.sendKeys(emailText);
+
+        wait.until(ExpectedConditions.visibilityOfAllElements(phoneField));
+        this.phoneField.clear();
+        this.phoneField.sendKeys(phoneText);
+
+        wait.until(ExpectedConditions.elementToBeClickable(submitCompanyBtn));
+        submitCompanyBtn.click();
+
+        return new ReceiptPage(driver);
+    }
     public ReceiptPage accessMenuCompanies(){
         wait.until(ExpectedConditions.elementToBeClickable(menuCompanies));
         menuCompanies.click();
@@ -63,20 +86,6 @@ public class Companies extends PageObject {
         createNewCompany.click();
         return new ReceiptPage(driver);
     }
-    public ReceiptPage accessLevel2RadioBtn(){
-        wait.until(ExpectedConditions.elementToBeClickable(level1RadioBtn));
-        level1RadioBtn.click();
-        return new ReceiptPage(driver);
-    }
-    public void enterCompanyName(String companyName){
-        this.companyName.clear();
-        this.companyName.sendKeys(companyName);
-    }
-    public ReceiptPage submitCompany(){
-        wait.until(ExpectedConditions.elementToBeClickable(submitCompanyBtn));
-        submitCompanyBtn.click();
-        return new ReceiptPage(driver);
-    }
     public String getCompanyTitle(){
         wait.until(ExpectedConditions.visibilityOfAllElements(companyTitle));
         return companyTitle.getText();
@@ -85,20 +94,6 @@ public class Companies extends PageObject {
         wait.until(ExpectedConditions.elementToBeClickable(deleteCompany));
         deleteCompany.click();
         return new ReceiptPage(driver);
-    }
-    public ReceiptPage addInfoBtn(){
-        wait.until(ExpectedConditions.elementToBeClickable(addInfoBtn));
-        addInfoBtn.click();
-        return new ReceiptPage(driver);
-    }
-    public void enterCompanyName(String emailText,String phoneText){
-        wait.until(ExpectedConditions.visibilityOfAllElements(emailField));
-        this.emailField.clear();
-        this.emailField.sendKeys(emailText);
-
-        wait.until(ExpectedConditions.visibilityOfAllElements(phoneField));
-        this.phoneField.clear();
-        this.phoneField.sendKeys(phoneText);
     }
     public String getTicketStage(){
         wait.until(ExpectedConditions.visibilityOfAllElements(validateTitle));

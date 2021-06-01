@@ -112,33 +112,32 @@ public class Departments extends PageObject {
         createDepartment.click();
         return new ReceiptPage(driver);
     }
-    public void enterDepartmentName(String departmentName) {
+
+    public void createDepartment(String departmentName,String addPhoneNr, String addSkype, String addEmail, String addWebSite, String addCountry,
+                             String addStreet, String addBuildingNr, String addCity,String addZipCoed,String addRoomNumber){
+        wait.until(ExpectedConditions.elementToBeClickable(createDepartment));
+        createDepartment.click();
+
         this.departmentName.clear();
         this.departmentName.sendKeys(departmentName);
-    }
-    public ReceiptPage accessAdditionalInfo(){
+
+        wait.until(ExpectedConditions.elementToBeClickable(additionalInfo));
         additionalInfo.click();
-        return new ReceiptPage(driver);
-    }
-    public void enterPhoneNumber(String addPhoneNr) {
+
         wait.until(ExpectedConditions.visibilityOfAllElements(addPhoneNumber));
         this.addPhoneNumber.clear();
         this.addPhoneNumber.sendKeys(addPhoneNr);
-    }
-    public void enterSkypeId(String addSkype){
+
         wait.until(ExpectedConditions.visibilityOfAllElements(addSkypeId));
         this.addSkypeId.clear();
         this.addSkypeId.sendKeys(addSkype);
-    }
-    public void enterWebSite(String addWebSite){
-        this.addWebSite.clear();
-        this.addWebSite.sendKeys(addWebSite);
-    }
-    public void enterEmail(String addEmail){
+
         this.addEmail.clear();
         this.addEmail.sendKeys(addEmail);
-    }
-    public void enterAddress(String addCountry, String addStreet, String addBuildingNr, String addCity){
+
+        this.addWebSite.clear();
+        this.addWebSite.sendKeys(addWebSite);
+
         this.addCountry.clear();
         this.addCountry.sendKeys(addCountry);
 
@@ -150,20 +149,18 @@ public class Departments extends PageObject {
 
         this.addCity.clear();
         this.addCity.sendKeys(addCity);
-    }
-    public void enterZipCode(String addZipCoed){
+
         this.addZipCoed.clear();
         this.addZipCoed.sendKeys(addZipCoed);
-    }
-    public void enterRoomNumber(String addRoomNumber){
+
         this.addRoomNumber.clear();
         this.addRoomNumber.sendKeys(addRoomNumber);
-    }
-    public ReceiptPage accessDepartmentSubmit(){
+
         wait.until(ExpectedConditions.elementToBeClickable(departmentSubmit));
         departmentSubmit.click();
-        return new ReceiptPage(driver);
     }
+
+
     public ReceiptPage accessCreatedDepartment(){
         wait.until(ExpectedConditions.elementToBeClickable(createdDepartment));
         createdDepartment.click();
@@ -218,6 +215,9 @@ public class Departments extends PageObject {
     public ReceiptPage deleteDepartment(){
         wait.until(ExpectedConditions.elementToBeClickable(deleteDepartmentBtn));
         deleteDepartmentBtn.click();
+
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
         return new ReceiptPage(driver);
     }
     public void handleAlert(){

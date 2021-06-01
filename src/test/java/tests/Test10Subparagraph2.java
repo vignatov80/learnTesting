@@ -15,6 +15,8 @@ public class Test10Subparagraph2 extends BaseChromeConfiguration {
         */
         Tickets ticketsPage = new Tickets(driver);
         //values for dropdown
+        String ticketTitle = "TestTitle2";
+        String ticketDescription = "TestDescription";
         String category = "YouTube";
         String stage = "OPEN";
         String company = "test";
@@ -24,25 +26,20 @@ public class Test10Subparagraph2 extends BaseChromeConfiguration {
         String contactId = "4: 2592";
         String fullName = "Vlad Vlad";
         String loginName = "aaa@mai.ru";
+        String closedStatus= "CLOSED";
 
         //Access create ticket
         ticketsPage.accessCreateTickets();
-        //Insert values in title and description
-        ticketsPage.enterTitleDescription(properties.getProperty("db.ticket.title"),properties.getProperty("db.ticket.description") );
-        /**
-         * Populate dropdowns
-         * */
-        ticketsPage.enterCategory(category);
-        ticketsPage.enterStage(stage);
-        ticketsPage.enterCompany(company);
-        ticketsPage.enterPriority(priority);
-        ticketsPage.enterDepartment(department);
-        ticketsPage.enterManager(manager);
-        ticketsPage.enterContactId(contactId);
 
-        //Access submit
-        ticketsPage.accessSubmit();
-        //Access create Ticket
+        /**
+         * Create Ticket
+         * */
+        ticketsPage.createTicket(ticketTitle,ticketDescription,category,stage,
+                                 company,priority,department,manager,contactId);
+
+        /**
+         * Access already create Ticket
+         * */
         ticketsPage.accessCreatedTicket();
 
         /**
@@ -57,6 +54,11 @@ public class Test10Subparagraph2 extends BaseChromeConfiguration {
          * Close ticket
          * */
         ticketsPage.accessCloseTicket();
-        ticketsPage.handleAlert();
+
+        /**
+         * Validate that ticket was closed
+         * */
+        ticketsPage.accessInfoButton();
+        assertEquals(closedStatus,ticketsPage.getStatusField());
     }
 }

@@ -10,7 +10,6 @@ import static org.junit.Assert.assertNotSame;
 
 public class Test10Subparagraph4 extends BaseChromeConfiguration {
 
-
     @Test
     public void createNewCompany() throws InterruptedException {
 
@@ -26,23 +25,20 @@ public class Test10Subparagraph4 extends BaseChromeConfiguration {
 
         //Access menu companies
         companies.accessMenuCompanies();
+
         //Access create company
         companies.accessCreateNewCompany();
-        //Access level 2 radio btn
-        companies.accessLevel2RadioBtn();
-        //Inset company name
-        companies.enterCompanyName(companyName);
-        //Additional information
-        companies.addInfoBtn();
-        //Insert company email, phone number
-        companies.enterCompanyName(email,phone);
-        //submit
-        companies.submitCompany();
+
+        //Create company
+        companies.createCompany(companyName,email,phone);
+
         //Validate that company was created
         assertEquals(companyName,companies.getCompanyTitle());
+
         //Delete company
         companies.deleteCompany();
         PopUps.handleAlert();
+
         //Validate that company was deleted
         assertNotSame( companyName,companies.getTicketStage());
     }

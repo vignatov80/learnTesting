@@ -30,25 +30,16 @@ public class Test10Subparagraph3 extends BaseChromeConfiguration {
 
         //Access menu departments
         departmentsPage.accessMenuDepartments();
-        //Access create departments
-        departmentsPage.accessCreateDepartment();
 
         /**
-         * Enter values for department registration
+         * Create department
          */
-        departmentsPage.enterDepartmentName(department);
-        departmentsPage.accessAdditionalInfo();
-        departmentsPage.enterPhoneNumber(phoneNr);
-        departmentsPage.enterSkypeId(skypeId);
-        departmentsPage.enterWebSite(webSite);
-        departmentsPage.enterEmail(email);
-        departmentsPage.enterAddress(country,street,buildingNr,city);
-        departmentsPage.enterZipCode(zipCode);
-        departmentsPage.enterRoomNumber(roomNumber);
+        departmentsPage.createDepartment(department,phoneNr,skypeId,email,webSite,country,street,
+                                            buildingNr,city,zipCode,roomNumber);
 
-        //Press submit
-        departmentsPage.accessDepartmentSubmit();
-        //Access created department
+        /**
+         * Access already created department
+         */
         departmentsPage.accessCreatedDepartment();
 
         /**
@@ -70,7 +61,6 @@ public class Test10Subparagraph3 extends BaseChromeConfiguration {
 
         //Delete department
         departmentsPage.deleteDepartment();
-        departmentsPage.handleAlert();
 
         /**
          * Validate that department was deleted

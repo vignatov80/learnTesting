@@ -155,55 +155,55 @@ public class Tickets extends PageObject {
             eachElement.getText();
         }
     }
-    //Enter ticket title and description
-    public void enterTitleDescription(String createTicketTitle, String ticketDescription) {
+
+    /**
+     * Create tciket
+     * @param createTicketTitle
+     * @param ticketDescription
+     * @param optionCategory
+     * @param optionStage
+     * @param optionCompany
+     * @param optionPriority
+     * @param optionDepartment
+     * @param optionManager
+     * @param valueContactId
+     * @return
+     */
+    public ReceiptPage createTicket(String createTicketTitle, String ticketDescription, String optionCategory,
+                                    String optionStage, String optionCompany, String optionPriority,
+                                    String optionDepartment, String optionManager,String valueContactId){
         this.createTicketTitle.clear();
         this.createTicketTitle.sendKeys(createTicketTitle);
 
         this.ticketDescription.clear();
         this.ticketDescription.sendKeys(ticketDescription);
-    }
 
-    /**
-     *Populate dropdowns
-     */
-    public void enterCategory(String optionCategory){
         Select drpCategory = new Select(category);
         drpCategory.selectByVisibleText(optionCategory);
-    }
-    public void enterStage(String optionStage){
+
         Select drpStage = new Select(stage);
         drpStage.selectByVisibleText(optionStage);
-    }
-    public void enterCompany(String optionCompany){
+
         Select drpCompany = new Select(company);
         drpCompany.selectByVisibleText(optionCompany);
-    }
-    public ReceiptPage accessCreateContact(){
-        createContact.click();
-        return new ReceiptPage(driver);
-    }
-    public void enterPriority(String optionPriority){
+
         Select drpPriority = new Select(priority);
         drpPriority.selectByVisibleText(optionPriority);
-    }
-    public void enterContactId(String valueContactId){
-        Select drpPriority = new Select(contactId);
-        drpPriority.selectByValue(valueContactId);
-    }
-    public void enterDepartment(String optionDepartment){
+
         Select drpDepartment = new Select(department);
         drpDepartment.selectByVisibleText(optionDepartment);
-    }
-    public void enterManager(String optionManager){
+
         Select drpManager = new Select(manager);
         drpManager.selectByVisibleText(optionManager);
-    }
-    //Click submit
-    public ReceiptPage accessSubmit(){
+
+        Select drpContact = new Select(contactId);
+        drpContact.selectByValue(valueContactId);
+
+
         submit.click();
         return new ReceiptPage(driver);
     }
+
     //Click create ticket
     public ReceiptPage accessCreatedTicket(){
         wait.until(ExpectedConditions.elementToBeClickable(createdTicket));
@@ -234,12 +234,13 @@ public class Tickets extends PageObject {
     public ReceiptPage accessCloseTicket(){
         wait.until(ExpectedConditions.elementToBeClickable(closeTicket));
         closeTicket.click();
-        return new ReceiptPage(driver);
-    }
-    public void handleAlert(){
+
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+
+        return new ReceiptPage(driver);
     }
+
     //Access ticket info
     public ReceiptPage accessInfoButton(){
         wait.until(ExpectedConditions.elementToBeClickable(infoButton));
