@@ -36,7 +36,7 @@ public class Test11 {
 
     /**
      * Test random number generation but it returns it like string
-     * and the and max number is higher than in getRandomNumber
+     * and the max number is higher than in getRandomNumber
      */
     @Test
     public void getRandomStringNumbers(){

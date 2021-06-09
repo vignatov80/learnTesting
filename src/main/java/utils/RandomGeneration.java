@@ -6,7 +6,7 @@ public class RandomGeneration {
 
     Random random = new Random();
 
-    public void randomString(int LengthOfString) {
+    public String randomString(int LengthOfString) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         String randomString = "";
         int length = LengthOfString;
@@ -20,8 +20,8 @@ public class RandomGeneration {
         for (int i = 0; i < text.length; i++) {
             randomString += text[i];
         }
-
-        System.out.println(randomString);
+        return randomString.substring(0, 1).toUpperCase() + randomString.substring(1);
+//        System.out.println(randomString);
     }
 
 
@@ -45,7 +45,7 @@ public class RandomGeneration {
         return random;
     }
 
-    public void randomStringNumbers(int LengthOfString) {
+    public String randomStringNumbers(int LengthOfString) {
         String characters = "1234567890";
         String randomString = "";
         int length = LengthOfString;
@@ -60,7 +60,9 @@ public class RandomGeneration {
             randomString += text[i];
         }
 
-        System.out.println(randomString);
+        return randomString;
+
+//        System.out.println(randomString);
     }
 
 
