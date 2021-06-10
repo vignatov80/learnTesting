@@ -92,6 +92,7 @@ public class Managers extends PageObject {
         menuManagers.click();
         return new ReceiptPage(driver);
     }
+
     public ReceiptPage createNewDepartments( String insertFirstName, String insertLastName,
                                              String insertEmail, String insertPhoneNumber,
                                              String optionDepartment){
@@ -123,13 +124,14 @@ public class Managers extends PageObject {
 
         return new ReceiptPage(driver);
     }
-    public void managerValidation(String optionDepartment){
-        String sFirstName = "First name";
-        String sLastName = "Last name";
-        String sEmail = "Email";
-        String sDepartment = "Department";
-        String sPhone = "Phone";
-        String sSkype = "Skype";
+    public void managerValidation(String optionDepartment, String sFirstName,String sLastName, String sEmail,
+                                  String sDepartment, String sPhone,String sSkype){
+//        String sFirstName = "First name";
+//        String sLastName = "Last name";
+//        String sEmail = "Email";
+//        String sDepartment = "Department";
+//        String sPhone = "Phone";
+//        String sSkype = "Skype";
         String fullName = map.get(sFirstName)+" "+map.get(sLastName);
 
 
