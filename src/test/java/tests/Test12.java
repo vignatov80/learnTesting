@@ -6,6 +6,7 @@ import org.junit.Test;
 import utils.RandomGeneration;
 
 public class Test12  extends BaseFirefoxConfiguration {
+
     @Test
     public void createManager() throws InterruptedException {
 
@@ -16,18 +17,23 @@ public class Test12  extends BaseFirefoxConfiguration {
         int lengthOfTelephoneNumber = 10;
         String department = "Комната добра";
 
+        /**
+         * Access manager menu
+         */
         managers.accessMenuDepartments();
+
+        /**
+         * Create manager
+         */
         managers.createNewDepartments(random.randomString(lengthOfName),random.randomString(lengthOfName),
                 random.randomString(lengthOfName)+"@"+random.randomString(4)+".com",
                 random.randomStringNumbers(lengthOfTelephoneNumber),department);
 
-//        Thread.sleep(1000);
-        managers.getMappedData();
-//        Thread.sleep(1000);
-        managers.managerSubmit();
+        /**
+         * Validate created manager
+         */
+        managers.managerValidation(department);
 
-                System.out.println(managers.getMappedData());
 
-//        managers.insertCredentials();
     }
 }
