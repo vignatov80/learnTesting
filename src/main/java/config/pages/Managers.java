@@ -22,25 +22,25 @@ public class Managers extends PageObject {
     private WebElement newManager;
 
     @FindBy(id="firstName")
-    private WebElement firstName;
+    public WebElement firstName;
 
     @FindBy(id="lastName")
-    private WebElement lastName;
+    public WebElement lastName;
 
     @FindBy(xpath="//*[@id = 'email']")
-    private WebElement email;
+    public WebElement email;
 
     @FindBy(id ="login")
     private WebElement login;
 
     @FindBy(id ="phone")
-    private WebElement phone;
+    public WebElement phone;
 
     @FindBy(id ="skype")
-    private WebElement skype;
+    public WebElement skype;
 
     @FindBy(id ="manager-form-department-select")
-    private WebElement departmentId;
+    public WebElement departmentId;
 
     @FindBy(id ="manager-form-submit")
     private WebElement submit;
@@ -58,25 +58,25 @@ public class Managers extends PageObject {
     private WebElement createdManager;
 
     @FindBy(xpath = "//div[contains (text(),'Name')]/following-sibling::div/p[@class='text-left']")
-    private WebElement getTitle;
+    public WebElement getTitle;
 
     @FindBy(xpath = "//div[contains (text(),'Phone')]/following-sibling::div/p[@class='text-left']")
-    private WebElement getPhoneNr;
+    public WebElement getPhoneNr;
 
     @FindBy(xpath = "//div[contains (text(),'Skype')]/following-sibling::div/p[@class='text-left']")
-    private WebElement getSkype;
+    public WebElement getSkype;
 
     @FindBy(xpath = "//td[contains(text(),'.com')]")
-    private WebElement getEmail;
+    public WebElement getEmail;
 
     @FindBy(xpath = "//div[contains (text(),'Login')]/following-sibling::div/p[@class='text-left']")
-    private WebElement getLogin;
+    public WebElement getLogin;
 
     @FindBy(xpath = "//div[contains (text(),'Department')]/following-sibling::div/p[@class='text-left']")
-    private WebElement getDepartment;
+    public WebElement getDepartment;
 
     @FindBy(id="manager-details-backtolist")
-    private WebElement goBack;
+    public WebElement goBack;
 
 
     WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -93,7 +93,7 @@ public class Managers extends PageObject {
         return new ReceiptPage(driver);
     }
 
-    public ReceiptPage createNewDepartments( String insertFirstName, String insertLastName,
+    public ReceiptPage createNewManager( String insertFirstName, String insertLastName,
                                              String insertEmail, String insertPhoneNumber,
                                              String optionDepartment){
         wait.until(ExpectedConditions.elementToBeClickable(newManager));
@@ -122,53 +122,35 @@ public class Managers extends PageObject {
         Select drpCompany = new Select(departmentId);
         drpCompany.selectByVisibleText(optionDepartment);
 
+
+
         return new ReceiptPage(driver);
     }
-    public void managerValidation(String optionDepartment, String sFirstName,String sLastName, String sEmail,
-                                  String sDepartment, String sPhone,String sSkype){
-//        String sFirstName = "First name";
-//        String sLastName = "Last name";
-//        String sEmail = "Email";
-//        String sDepartment = "Department";
-//        String sPhone = "Phone";
-//        String sSkype = "Skype";
-        String fullName = map.get(sFirstName)+" "+map.get(sLastName);
 
+    public void submitManager(){
+                submit.click();
+    }
 
-        map.put(sFirstName,firstName.getAttribute("value"));
-        map.put(sLastName,lastName.getAttribute("value"));
-        map.put(sEmail,email.getAttribute("value"));
-        map.put(sDepartment,departmentId.getAttribute("value"));
-        map.put(sPhone,phone.getAttribute("value"));
-        map.put(sSkype,skype.getAttribute("value"));
-
-        submit.click();
-
+    public void managerSearch(String sFirstName,String sLastName){
         wait.until(ExpectedConditions.visibilityOfAllElements(searchFirstName));
         this.searchFirstName.clear();
-        this.searchFirstName.sendKeys(map.get(sFirstName));
+        this.searchFirstName.sendKeys(sFirstName);
 
         wait.until(ExpectedConditions.visibilityOfAllElements(searchLastName));
         this.searchLastName.clear();
-        this.searchLastName.sendKeys(map.get(sLastName));
+        this.searchLastName.sendKeys(sLastName);
 
         wait.until(ExpectedConditions.elementToBeClickable(filterManagers));
         filterManagers.click();
 
         wait.until(ExpectedConditions.elementToBeClickable(createdManager));
         createdManager.click();
-
-
-        assertEquals(getTitle.getText(),map.get(sFirstName)+" "+map.get(sLastName));
-        assertEquals(getPhoneNr.getText(), map.get(sPhone));
-        assertEquals(getSkype.getText(), map.get(sSkype) );
-        assertEquals(getLogin.getText(), map.get(sSkype) );
-        assertEquals(getDepartment.getText(), optionDepartment );
-
-        goBack.click();
-
-        wait.until(ExpectedConditions.visibilityOf(getEmail));
-        assertEquals(getEmail.getText(), map.get(sEmail).toLowerCase() );
     }
+
+    public void getBack(){
+        goBack.click();
+        wait.until(ExpectedConditions.visibilityOf(getEmail));
+    }
+
 
 }
