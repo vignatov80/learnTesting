@@ -81,6 +81,11 @@ public class Companies extends PageObject {
         menuCompanies.click();
         return new ReceiptPage(driver);
     }
+    public ReceiptPage accessCompaniesUsingDriver(){
+        wait.until(ExpectedConditions.elementToBeClickable(menuCompanies));
+        menuCompanies.click();
+        return new ReceiptPage(driver);
+    }
     public ReceiptPage accessCreateNewCompany(){
         wait.until(ExpectedConditions.elementToBeClickable(createNewCompany));
         createNewCompany.click();
@@ -99,4 +104,5 @@ public class Companies extends PageObject {
         wait.until(ExpectedConditions.visibilityOfAllElements(validateTitle));
         return validateTitle.getText();
     }
+
 }

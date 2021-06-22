@@ -37,7 +37,7 @@ public class Test10Subparagraph4 extends BaseChromeConfiguration {
 
         //Delete company
         companies.deleteCompany();
-        PopUps.handleAlert();
+//        PopUps.handleAlert();
 
         //Validate that company was deleted
         assertNotSame( companyName,companies.getTicketStage());

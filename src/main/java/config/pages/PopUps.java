@@ -7,13 +7,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PopUps extends PageObject {
 
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
+    WebDriverWait wait = new WebDriverWait(driver, 10);
 
     public PopUps(WebDriver driver) {
         super(driver);
     }
 
-    public static void handleAlert(){
+    public static PopUps using(WebDriver driver) {
+        return new PopUps(driver);
+    }
+
+
+    public void handleAlert(){
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
     }
