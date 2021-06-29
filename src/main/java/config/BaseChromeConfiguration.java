@@ -30,16 +30,16 @@ public class BaseChromeConfiguration extends ReadProperties {
     /**
      * Clear Cookies
      */
-//    @After
-//    public void cleanUp(){
-//        driver.manage().deleteAllCookies();
-//    }
-//
-//    /**
-//     * Close Chrome Driver
-//     */
-//    @AfterClass
-//    public static void quitDriver() {
-//        driver.close();
-//    }
+    @After
+    public void cleanUp(){
+        driver.manage().deleteAllCookies();
+    }
+
+    /**
+     * Close Chrome Driver
+     */
+    @AfterClass
+    public static void quitDriver() {
+        driver.close();
+    }
 }
