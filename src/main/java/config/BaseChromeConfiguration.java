@@ -8,16 +8,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseChromeConfiguration extends ReadProperties {
-    protected static WebDriver driver;
+    protected static WebDriver driver = null;
+    public static String browserName = "chrome";
     protected static SIgnUp signUpPage;
+
     /**
      * Initialization of Chrome driver
      */
     @Before
     public void initConfig() {
         configFileReader();
-        System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver.path"));
-        driver = new ChromeDriver();
+        
+//        Singleton pattern
+        if(driver ==null)
+            if(browserName.equalsIgnoreCase("chrome")){
+                System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver.path"));
+                driver = new ChromeDriver();
+            }
+
         //Access to base URL
         driver.get(properties.getProperty("db.baseUrl"));
         driver.manage().window().maximize();
