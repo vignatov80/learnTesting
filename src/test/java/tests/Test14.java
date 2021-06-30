@@ -1,6 +1,7 @@
 package tests;
 
 import config.BaseChromeConfiguration;
+import config.pages.Companies;
 import config.pages.CompaniesT14;
 import config.pages.PopUps;
 import org.junit.Test;
@@ -14,19 +15,19 @@ public class Test14 extends BaseChromeConfiguration {
 
         String companyName = "TestCompanyName";
 
-        CompaniesT14 companiesT13 = CompaniesT14.using(driver)
-                .clickMenuCompanies()
-                .companyName(companyName)
-                .serviceProgram()
-                .submit();
+        Companies companies = new Companies(driver);
 
-        assertEquals(companyName, companiesT13.getCompanyTitle());
+        new CompaniesT14.Builder()
+                .setCompanyName(companyName)
+                .build();
 
-        CompaniesT14.using(driver)
-                    .deleteCompany();
+        assertEquals(companies.getCompanyTitle(),companyName);
+
+        companies.deleteCompany();
 
         PopUps.using(driver)
                 .handleAlert();
+
     }
 
 }
