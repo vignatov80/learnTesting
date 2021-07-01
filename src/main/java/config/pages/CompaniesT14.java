@@ -33,50 +33,55 @@ public class CompaniesT14 extends PageObject {
     @FindBy(xpath = "//tbody/tr[2]/td[5]/a[1]/i[1]")
     private WebElement deleteCompany;
 
-//    public CompaniesT14() {}
-
+    //Constructor with WebDriver
     public CompaniesT14(WebDriver driver) {
         super(driver);
     }
 
+    /**
+     * Instance for wait object.
+     * "In further constructor wait will be used in cases when page are not always loaded in time"
+     */
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
+    //Constructor for create a company
     public CompaniesT14(WebDriver driver, String insertCompanyName) {
 
         super(driver);
-
+        //click menu companies
         wait.until(ExpectedConditions.elementToBeClickable(menuCompanies));
         this.menuCompanies.click();
 
+        //click create new company
         wait.until(ExpectedConditions.elementToBeClickable(createNewCompany));
         this.createNewCompany.click();
 
+        //populate company name
         wait.until(ExpectedConditions.visibilityOfAllElements(companyName));
         this.companyName.clear();
         this.companyName.sendKeys(insertCompanyName);
 
+        //click level 1 radio button
         this.level1RadioBtn.click();
 
+        //submit
         this.submitCompanyBtn.click();
 
         wait.until(ExpectedConditions.visibilityOfAllElements(companyTitle));
     }
 
-//    public static CompaniesT14 using(WebDriver driver) {
-//        return new CompaniesT14(driver);
-//    }
 
     public static class Builder {
         private String insertCompanyName;
 
 
         public Builder(){}
-
+        //setter for company name
         public Builder setCompanyName(String insertCompanyName) {
             this.insertCompanyName = insertCompanyName;
             return this;
         }
-
+        //instance for CompaniesT14
         public CompaniesT14 build() {
             return new CompaniesT14(driver,insertCompanyName);
         }
