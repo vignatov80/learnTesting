@@ -19,7 +19,7 @@ public class Test10Subparagraph4 extends BaseChromeConfiguration {
         Companies companies = new Companies(driver);
         PopUps popUps = new PopUps(driver);
         //Variables for registration fields
-        String companyName = "TestCompanyName";
+        String companyName = "Test_CompanyName";
         String email = "EmailTest@TestMail.com";
         String phone = "999999999";
 
